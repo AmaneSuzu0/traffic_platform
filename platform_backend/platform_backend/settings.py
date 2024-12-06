@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "data_prediction.apps.DataPredictionConfig",
     "data_query.apps.DataQueryConfig",
     "map_display.apps.MapDisplayConfig",
+    "role.apps.RoleConfig",
+    "menu.apps.MenuConfig",
 ]
 
 MIDDLEWARE = [

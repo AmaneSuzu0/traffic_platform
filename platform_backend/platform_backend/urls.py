@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('user/', include('user.urls')),  # 角色管理模块
+    path('user/', include('user.urls')),  # 用户管理模块
+    path('role/', include('role.urls')),  # 角色管理模块
+    path('menu/', include('menu.urls')),  # 菜单管理模块
+
     # path('api/', include('api.urls')),  # 接口模块
     # path('data_prediction/', include('data_prediction.urls')),  # 流量数据预测模块
     # path('data_query/', include('data_query.urls')),  # 道路交通信息查询模块

@@ -18,7 +18,7 @@
             </el-form-item>
 
 
-            <el-checkbox style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+            <el-checkbox v-model="loginForm.rememberPassword" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
             <el-form-item style="width:100%;">
                 <el-button @click.prevent="handleLogin" size="large" type="primary" style="width:100%;">
                     <span>登 录</span>
@@ -41,10 +41,14 @@
     import requestUtil from '@/utils/request'
     import qs from 'qs'
     import { ElMessage } from 'element-plus'
+    import Cookies from "js-cookie";
+    import { encrypt, decrypt } from "@/utils/jsencrypt";
+    import router from '@/router'
 
     const loginForm = ref({
         username: '',
         password: '',
+        rememberPassword: false,
     })
 
     const loginRules = {  //表单验证规则
@@ -68,10 +72,23 @@
                     ElMessage.success(data.message)
                     window.sessionStorage.setItem('token', data.token) //保存token到sessionStorage
                     window.sessionStorage.setItem('currentUser', JSON.stringify(data.user))  //保存用户信息到sessionStorage
+                    window.sessionStorage.setItem("menuList", JSON.stringify(data.menuList))  //保存菜单列表到sessionStorage
                     // JSON.parse()方法可以将字符串转换为json对象(与JSON.stringify相反)
+                    if (loginForm.value.rememberPassword) {
+                        // 如果记住密码，则保存到cookie
+                        Cookies.set("username", loginForm.value.username, { expires: 30 });  //保存用户名到cookie，有效期30天
+                        Cookies.set("password", encrypt(loginForm.value.password), { expires: 30 });  //保存加密后的密码到cookie，有效期30天
+                        Cookies.set("rememberPassword", loginForm.value.rememberMe, { expires: 30 });  //保存记住密码选项到cookie，有效期30天
 
+                    }
+                    else {
+                        // 如果不记住密码，则删除cookie
+                        Cookies.remove("username");
+                        Cookies.remove("password");
+                        Cookies.remove("rememberMe");
+                    }
                     // 跳转到首页
-
+                    router.push({ name: 'index' })
                 }
                 else {
                     // 登录失败,账号或密码错误
@@ -84,6 +101,19 @@
             }
         })
     }
+
+    function getCookie() {
+        const username = Cookies.get("username");
+        const password = Cookies.get("password");
+        const rememberPassword = Cookies.get("rememberPassword");
+        loginForm.value = {
+            // 如果cookie中没有定义，则使用登陆表单中的默认值，否则使用cookie中的值
+            username: username === undefined ? loginForm.value.username : username,
+            password: password === undefined ? loginForm.value.password : decrypt(password),
+            rememberPassword: rememberPassword === undefined ? false : Boolean(rememberPassword)
+        };
+    }
+    getCookie();
 
 </script>
 
