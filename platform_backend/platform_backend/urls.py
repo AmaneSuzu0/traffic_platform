@@ -14,7 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.views.static import serve
+
+from platform_backend import settings
 
 urlpatterns = [
     path('user/', include('user.urls')),  # 用户管理模块
@@ -25,4 +28,5 @@ urlpatterns = [
     # path('data_prediction/', include('data_prediction.urls')),  # 流量数据预测模块
     # path('data_query/', include('data_query.urls')),  # 道路交通信息查询模块
     # path('map_display/', include('map_display.urls')),  # 地图展示模块
+    re_path('media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}, name='media')
 ]

@@ -88,7 +88,7 @@
                         Cookies.remove("rememberMe");
                     }
                     // 跳转到首页
-                    router.push({ name: 'index' })
+                    router.push({ name: 'home' })
                 }
                 else {
                     // 登录失败,账号或密码错误

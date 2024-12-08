@@ -1,11 +1,17 @@
 <template>
-    道路交通流量地图
+    <div class="home">
+        道路交通流量地图
+    </div>
 </template>
-
-<script setup>
-
+<script>
+    export default {
+        name: "index"
+    };
 </script>
-
-<style scoped>
-
+<style lang="scss" scoped>
+    .home {
+        padding: 40px;
+        font-size: 30px;
+        font-weight: bold;
+    }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <el-menu active-text-color="#ffd04b" background-color="#2d3a4b" class="el-menu-vertical-demo" text-color="#fff"
         router:default-active="'/index'">
-        <el-menu-item index="/index" @click="toIndex()">
+        <el-menu-item index="/index" @click="navigateTo('/index')">
             <el-icon>
                 <home-filled />
             </el-icon>
@@ -27,14 +27,12 @@
 </template>
 <script setup>
     import { HomeFilled } from '@element-plus/icons-vue'
-    import { useRouter } from 'vue-router'
-    const router = useRouter()
+    import { useRouter } from 'vue-router'; // 导入 useRouter
+
+    const router = useRouter(); // 创建 router 实例
     const menuList = JSON.parse(sessionStorage.getItem("menuList"))
     const navigateTo = (path) => {
         router.push(path)
-    }
-    const toIndex = () => {
-        router.push({ name: 'index' })
     }
 </script>
 
