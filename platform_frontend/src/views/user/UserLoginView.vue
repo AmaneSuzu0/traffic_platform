@@ -44,6 +44,7 @@
     import Cookies from "js-cookie";
     import { encrypt, decrypt } from "@/utils/jsencrypt";
     import router from '@/router'
+    import { toRaw } from 'vue';
 
     const loginForm = ref({
         username: '',
@@ -61,10 +62,8 @@
     const handleLogin = () => {
         // validate使用async异步函数作为回调函数，回调函数可以获取到valid作为参数
         loginRef.value.validate(async (valid) => {
-            if (valid) { //验证通过
-                // ?后面的部分会以username=xxx&password=xxx的形式拼接到url后面，作为键值对的效果传给后端                   
-                let result = await requestUtil.post('/user/login?' + qs.stringify(loginForm.value))  //登录请求
-                console.log(result)
+            if (valid) { //验证通过  
+                let result = await requestUtil.get('/user/login', loginForm.value)  //登录请求
                 console.log(result.data.user)
                 let data = result.data
                 if (data.code === 200) {

@@ -10,7 +10,6 @@
                 </el-aside>
                 <el-container>
                     <el-main>
-                        <Tabs></Tabs>
                         <router-view></router-view>
                     </el-main>
                     <el-footer>

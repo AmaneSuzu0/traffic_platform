@@ -29,9 +29,10 @@ class LoginView(View):
                 resultMenuList.append(menu)
         return resultMenuList
 
-    def post(self, request):
+    def get(self, request):
         username = request.GET.get('username')
         password = request.GET.get('password')
+        print("username=", username, "password=", password)
         try:
             user = SysUser.objects.get(username=username, password=password)
             jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER  # 用来把user对象转换为载荷的函数

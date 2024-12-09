@@ -7,6 +7,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import '@/assets/styles/border.css'
 import '@/assets/styles/reset.css'
+import 'leaflet/dist/leaflet.css';
 
 
 const app = createApp(App)

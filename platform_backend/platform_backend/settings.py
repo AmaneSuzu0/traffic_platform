@@ -56,7 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "user.middleware.JwtAuthenticationMiddleware",
+    "user.middleware.JwtAuthenticationMiddleware",  # 在前端消息抵达后端时，会先经过这个中间件去验证token，如果token验证通过，则可以继续访问后端接口
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
