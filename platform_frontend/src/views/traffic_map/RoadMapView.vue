@@ -44,7 +44,8 @@
         try {
             let result = await requestUtil.get('/data_query/get_nodes', {
                 province: '山东省',
-                city: '青岛市'
+                city: '青岛市',
+                node_type: '道路交通',
             });
 
             let data = result.data;

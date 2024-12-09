@@ -11,6 +11,7 @@ class RoadNode(models.Model):
     city = models.CharField(max_length=100, verbose_name="城市")
     district = models.CharField(max_length=100, verbose_name="区县")
     node_name = models.CharField(max_length=255, verbose_name="道路节点名称")
+    node_type = models.CharField(max_length=50, verbose_name="节点类型")  # 新增节点类型字段
     longitude = models.FloatField(verbose_name="经度")
     latitude = models.FloatField(verbose_name="纬度")
     description = models.TextField(null=True, blank=True, verbose_name="描述信息")

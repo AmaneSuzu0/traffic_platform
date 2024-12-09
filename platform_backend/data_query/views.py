@@ -13,9 +13,10 @@ class GetNodesView(View):
     def get(self, request):
         province = request.GET.get('province')
         city = request.GET.get('city')
-        print(province, city)
+        node_type = request.GET.get('node_type')
+        print(province, city, node_type)
         try:
-            nodes = RoadNode.objects.filter(province=province, city=city).values()
+            nodes = RoadNode.objects.filter(province=province, city=city, node_type=node_type).values()
             node_list = list(nodes)
         except Exception as e:  # 未能获取到节点信息
             print(e)
