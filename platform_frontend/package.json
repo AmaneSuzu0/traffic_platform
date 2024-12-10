@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "core-js": "^3.8.3",
+    "element-china-area-data": "^6.1.0",
     "element-plus": "^2.2.6",
     "js-cookie": "^3.0.1",
     "jsencrypt": "^3.2.1",

@@ -25,7 +25,6 @@
     import SideBar from '@/layout/sidebar/SideBar'
     import Header from '@/layout/header/Header'
     import Footer from '@/layout/footer/Footer'
-    import Tabs from '@/layout/main/Tabs'
 </script>
 
 <style scoped>
