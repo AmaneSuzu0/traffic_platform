@@ -11,6 +11,13 @@
   ```
 
 - 使用PyCharm打开platform_backend文件夹，并选择使用刚创建的新环境。
+
+- **安装依赖库**
+
+  ```shell
+  pip install -r requirements.txt
+  ```
+
 - **创建数据库**
 
 先创建一个数据库，然后在platform_backend/settings.py文件中修改DATABASES修改NAME、USER、PASSWORD（数据库名称、用户名、密码）
@@ -37,17 +44,26 @@ python manage.py migrate
 
 - **导入sql数据**
 
-sql文件在init_sql文件夹中。
+先修改一键执行全部sql文件的init_all_sql.py文件
 
-由于目前数据仅为测试数据，建议把.sql文件中的sql语句复制出来到可视化数据库程序(例sqlyog)中执行。
+```python
+# 数据库连接配置
+config = {
+    'user': 'root',
+    'password': 'password',
+    'host': 'localhost',
+    'database': 'database_name',
+}
+```
 
-- **安装依赖库**
+修改完成后在终端执行，即可生成数据。
 
-  ```shell
-  pip install -r requirements.txt
-  ```
+```shell
+python init_all_sql.py
+```
 
 - **本地运行测试**
+
 
 ## 2. 项目概述
 
