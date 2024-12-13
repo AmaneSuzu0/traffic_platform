@@ -8,8 +8,24 @@ export const getColor = (value) => { // 帮助计算节点颜色的函数
     return `hsl(${hue}, 100%, 50%)`;
 };
 
+export const getMap = (containerId, latitude, longitude, zoom) => { // 帮助创建地图的函数
 
+    const map = L.map(containerId).setView([latitude, longitude], zoom); // 使用传入的容器 ID
 
+    // 添加地图图层
+    L.tileLayer("http://t0.tianditu.gov.cn/vec_w/wmts?" +
+        "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
+        "&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=93b39d8073f49ca3ed46bc63841115b7"
+    ).addTo(map);
+
+    L.tileLayer(
+        "https://t0.tianditu.gov.cn/cva_w/wmts?" +
+        "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
+        "&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=93b39d8073f49ca3ed46bc63841115b7"
+    ).addTo(map);
+
+    return map; // 返回地图实例
+};
 
 export function initializeTooltipPopup() {
     // 重新定义 Tooltip 的动画缩放方法

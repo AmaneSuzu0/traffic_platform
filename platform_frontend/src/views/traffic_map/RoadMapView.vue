@@ -15,10 +15,9 @@
 <script setup>
     import { onMounted, ref, onUnmounted } from 'vue';
     import L from 'leaflet'; // 导入 Leaflet
-    import { getColor } from '@/utils/mapUtils'
+    import { getColor, getMap, initializeTooltipPopup } from '@/utils/mapUtils'
     import requestUtil from '@/utils/request'
     import { ElMessage } from 'element-plus';
-    import { initializeTooltipPopup } from '@/utils/mapUtils';
     import AreaSelector from '@/layout/main/AreaSelector.vue';
 
 
@@ -29,26 +28,12 @@
 
     // 地图初始化逻辑
     const initMap = () => {
-        map.value = L.map('map').setView([36.067, 120.387], 12); // 初始化地图
-
-        // 添加地图图层
-        L.tileLayer("http://t0.tianditu.gov.cn/vec_w/wmts?" +
-            "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
-            "&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=93b39d8073f49ca3ed46bc63841115b7"
-        ).addTo(map.value);
-
-        L.tileLayer(
-            "https://t0.tianditu.gov.cn/cva_w/wmts?" +
-            "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
-            "&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=" +
-            "93b39d8073f49ca3ed46bc63841115b7"
-        ).addTo(map.value);
-
-        if (map.value) {
-            // 调用初始化 Tooltip 和 Popup 的函数
-            initializeTooltipPopup();
-        }
+        // 调用分离的 getMap 函数
+        map.value = getMap('map', 36.067, 120.387, 12); // 传入容器 ID、纬度和经度
+        // 初始化 Tooltip 和 Popup
+        initializeTooltipPopup();
     };
+
 
 
     const fetchNodes = async () => {
