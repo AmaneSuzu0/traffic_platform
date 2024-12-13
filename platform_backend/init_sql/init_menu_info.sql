@@ -1,5 +1,4 @@
-insert into
-`sys_menu`(`id`,`name`,`icon`,`parent_id`,`order_num`,`path`,`component`,`menu_type`,`perms`,`create_time`,`update_time`,`remark`) values
+insert into `sys_menu`(`id`,`name`,`icon`,`parent_id`,`order_num`,`path`,`component`,`menu_type`,`perms`,`create_time`,`update_time`,`remark`) values
 (1,'交通数据库','table',0,1,'/traffic_database','','M','','2024-12-06','2024-12-06','交通数据库目录'),
 (2,'交通流量地图','international',0,2,'/traffic_map','','M','','2024-12-06','2024-12-06','交通流量地图目录'),
 (3,'管理员权限','system',0,3,'/admin_management','','M','','2024-12-06','2024-12-06','管理员权限目录'),
