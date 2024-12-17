@@ -10,6 +10,12 @@
 npm install
 ```
 
+```shell
+npm install -g @vue/cli
+npm install @vue/cli-service --save-dev
+npm install element-china-area-data
+```
+
 - **本地运行**
 
 ```shell
@@ -269,5 +275,4 @@ import requestUtil from '@/utils/request'
   - 备注：起草前端帮助文档
   - 修改人员：陆通
   - 时间：2024年12月13日
-
 

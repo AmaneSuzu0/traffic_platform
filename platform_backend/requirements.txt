@@ -4,3 +4,5 @@ djangorestframework_jwt==1.11.0
 mysql_connector_repackaged==0.3.1
 PyJWT==1.7.1
 PyMySQL==1.1.1
+djangorestframework-jwt~=1.11.0
+mysql-connector-python~=9.0.0
