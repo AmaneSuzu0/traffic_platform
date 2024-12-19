@@ -14,12 +14,12 @@ cursor = conn.cursor()
 
 # 执行多个 SQL 文件
 sql_files = [
-    'init_sql/init_menu_info.sql',
-    'init_sql/init_role_info.sql',
-    'init_sql/init_user_info.sql',
-    'init_sql/init_traffic_node_info.sql',
-    'init_sql/init_sys_role_menu_info.sql',
-    'init_sql/init_sys_user_role_info.sql',
+    '../init_sql/init_menu_info.sql',
+    '../init_sql/init_role_info.sql',
+    '../init_sql/init_user_info.sql',
+    '../init_sql/init_traffic_node_info.sql',
+    '../init_sql/init_sys_role_menu_info.sql',
+    '../init_sql/init_sys_user_role_info.sql',
 ]
 
 for sql_file in sql_files:

@@ -70,3 +70,35 @@ class TrafficForecastSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrafficForecast  # 指明是哪个模型类
         fields = '__all__'  # 指明要序列化的字段，这里是全部字段
+
+
+class TaxiTrace(models.Model):
+    """出租车数据表"""
+    id = models.AutoField(primary_key=True)
+    taxi_id = models.CharField(max_length=100, verbose_name="出租车车牌号")
+    longitude = models.FloatField(verbose_name="经度")
+    latitude = models.FloatField(verbose_name="纬度")
+    speed = models.FloatField(verbose_name="速度")
+    direction = models.IntegerField(verbose_name="方向")
+    gps_time = models.DateTimeField(verbose_name="GPS 时间")
+    base_time = models.DateTimeField(verbose_name="基准时间")
+    status = models.IntegerField(verbose_name="状态")
+
+    class Meta:
+        db_table = "taxi_trace"
+
+
+class TaxiTraceSerializer(serializers.ModelSerializer):
+    """用于把一个出租车数据对象转换成序列号json数据"""
+    class Meta:
+        model = TaxiTrace  # 指明是哪个模型类
+        fields = '__all__'  # 指明要序列化的字段，这里是全部字段
+
+
+class TaxiInfo(models.Model):
+    """出租车信息表"""
+    id = models.AutoField(primary_key=True)
+    taxi_name = models.CharField(max_length=100, verbose_name="出租车车牌号")
+
+    class Meta:
+        db_table = "taxi_info"
